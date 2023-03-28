@@ -7,9 +7,14 @@ export class NewsItem extends Component {
       // yahan poora card uske button picture wagera ka bootstrap design hai
       <div className="my-3">
        <div className="card" >
-       <span class="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left: '90%', zIndex: '1' }} >
-            {source}
-          </span>
+       <div style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          position: 'absolute',
+          right: '0'
+       }}>
+       <span className="badge rounded-pill bg-danger">{source}</span>
+       </div>
        <img src={!imageUrl?"https://substackcdn.com/image/fetch/w_1200,h_600,c_limit,f_jpg,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F79fc15fc-6ea8-4426-acad-117e6c349ba0_922x876.png":imageUrl} className="card-img-top" alt="..."/>
        {/* agar image nhi hai to link ki image dikha do aur agar hai to image dikha  */}
        <div className="card-body">

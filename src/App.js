@@ -1,26 +1,16 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import React, { Component } from 'react'
+import React, {useState} from 'react'
 import News from './components/News';
 import LoadingBar from 'react-top-loading-bar'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
 
-export default class App extends Component {
-  pageSize=15;
-  apiKey= process.env.REACT_APP_NEWSAPP_API
+const App =()=> {
+  const pageSize=15;
+  const apiKey= process.env.REACT_APP_NEWSAPP_API
 
-  state = {                         //state naam ka obj jisme progress ki value 0 hai
-    progress:0
-  }
+  const [progress, setProgress] = useState(0)
 
-  setProgress = (progress)=>{                              // arrow func bana k usme state set kar di progress naam ki jiski default value 0 hai
-    this.setState({progress: progress})
-  }
-  render() {
     return (
       <div>
         <Router>
@@ -28,17 +18,17 @@ export default class App extends Component {
          <LoadingBar                        // component use kiya aur color height progress set krdi
            color='#f11946'
            height={3}
-           progress={this.state.progress}        //progress
+           progress={progress}        //progress
          />
-         {/* <News setProgress={this.setProgress} pageSize={this.pageSize}  country="de" category="science"/> */}
+         {/* <News setProgress={setProgress} pageSize={pageSize}  country="de" category="science"/> */}
           <Routes>
-            <Route exact path="/" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="general" pageSize={this.pageSize}  country="in" category="general"/>} />
-            <Route exact path="/entertainment" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="entertainment" pageSize={this.pageSize}  country="in" category="entertainment"/>} />
-            <Route exact path="/general" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="general" pageSize={this.pageSize}  country="in" category="general"/>} />
-            <Route exact path="/health" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="health" pageSize={this.pageSize}  country="in" category="health"/>} />
-            <Route exact path="/science" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="science" pageSize={this.pageSize}  country="in" category="science"/>} />
-            <Route exact path="/sports" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="sports" pageSize={this.pageSize}  country="in" category="sports"/>} />
-            <Route exact path="/technology" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="technology" pageSize={this.pageSize}  country="in" category="technology"/>} />   
+            <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize}  country="in" category="general"/>} />
+            <Route exact path="/entertainment" element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize}  country="in" category="entertainment"/>} />
+            <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize}  country="in" category="general"/>} />
+            <Route exact path="/health" element={<News setProgress={setProgress} apiKey={apiKey} key="health" pageSize={pageSize}  country="in" category="health"/>} />
+            <Route exact path="/science" element={<News setProgress={setProgress} apiKey={apiKey} key="science" pageSize={pageSize}  country="in" category="science"/>} />
+            <Route exact path="/sports" element={<News setProgress={setProgress} apiKey={apiKey} key="sports" pageSize={pageSize}  country="in" category="sports"/>} />
+            <Route exact path="/technology" element={<News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize}  country="in" category="technology"/>} />   
           </Routes>
         </Router>
         {/* multiple router use kiye so that page to page route kar sakein
@@ -48,4 +38,5 @@ export default class App extends Component {
       </div>
     )
   }
-}
+
+   export default App;

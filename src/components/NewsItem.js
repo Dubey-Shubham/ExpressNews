@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class NewsItem extends Component {
-  render() {
-    let {title, description, imageUrl,newsUrl, author, date, source } = this.props;   //ye destructuring hai(js concept) this.props agar ek object hai to usme se title description mil jayega 
+const NewsItem = (props)=> {
+
+    let {title, description, imageUrl,newsUrl, author, date, source } = props;   //ye destructuring hai(js concept) this.props agar ek object hai to usme se title description mil jayega 
     return (
       // yahan poora card uske button picture wagera ka bootstrap design hai
       <div className="my-3">
@@ -32,6 +32,5 @@ export class NewsItem extends Component {
       </div>
     )
   }
-}
 
 export default NewsItem
